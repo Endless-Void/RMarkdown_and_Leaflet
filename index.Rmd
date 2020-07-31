@@ -39,5 +39,6 @@ lnglat <- data.frame(lat = c(35.034679, 2.264251, 59.940305, 41.902407),
 lnglat %>% leaflet() %>% addTiles() %>%addMarkers(popup = sites, icon = Icons)
 ```
 
+Hope you liked. Ty.
 Have a nice day (or night)
 
