@@ -1,0 +1,43 @@
+---
+title: "DreamPlaces"
+author: "Endless-Void"
+date: "7/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Beautiful Places To Travel.
+
+Hi :3 I just want to show you some places that i think are amazing. 
+
+```{r libraries, warning=FALSE, message=FALSE}
+library(dplyr)
+library(leaflet)
+```
+
+```{r data, echo=FALSE}
+df <- data.frame(Country = c("JPN", "COL", "RUS", "ITA"),
+                 Site = c("Ryōan-ji Temple", 
+                          "Caño Cristales River", 
+                          "Hermitage Museum", 
+                          "St. Peter's Square"))
+df
+Icons <- makeIcon(iconUrl = c("https://upload.wikimedia.org/wikipedia/commons/6/62/Flag_of_Japan_%28with_border%29.png",
+                          "https://upload.wikimedia.org/wikipedia/commons/f/f8/Flag_of_Colombia.png",
+                          "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png",
+                          "https://upload.wikimedia.org/wikipedia/commons/e/e4/Flag_of_Italy_%281946–2003%29.png"),
+                  iconWidth = 31)
+sites <- c("<a href='https://www.japan-guide.com/e/e3909.html'>Ryōan-ji Temple</a>",
+           "<a href='http://www.bbc.com/travel/story/20140903-colombias-liquid-rainbow'>Caño Cristales River</a>",
+           "<a href='https://www.hermitagemuseum.org/wps/portal/hermitage/?lng=en'>Hermitage Museum</a>",
+           "<a href='https://www.romewise.com/st-peters-square.html'>St. Peter's Square</a>")
+lnglat <- data.frame(lat = c(35.034679, 2.264251, 59.940305, 41.902407),
+                     lng = c(135.718285, -73.794446, 30.314774, 12.456712))
+lnglat %>% leaflet() %>% addTiles() %>%addMarkers(popup = sites, icon = Icons)
+```
+
+Have a nice day (or night)
+
